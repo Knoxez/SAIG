@@ -3,7 +3,7 @@
    <head>
 
       <!-- Title -->
-      <title></title>
+      <title>Admin | @yield('title')</title>
 
       <meta content="width=device-width, initial-scale=1" name="viewport">
       <meta charset="utf-8">
@@ -59,7 +59,7 @@
                   </a>
                </div>
                <div class="logo-box">
-                  <a href="{{ URL('admin/inicio') }}" class="logo-text">
+                  <a href="{{ route('dashboard') }}" class="logo-text">
                      <span>SAIG</span>
                   </a>
                </div>
@@ -119,7 +119,7 @@
                         </li>
                         <li class="dropdown">
                            <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
-                              <span class="user-name">Usuario<i class="fa fa-angle-down"></i></span>
+                              <span class="user-name">{{auth()->user()->email}}<i class="fa fa-angle-down"></i></span>
                               <img src="{{ asset('admin/images/avatar1.png') }}" class="img-circle avatar" width="40" height="40" alt="">
                            </a>
                            <ul class="dropdown-menu dropdown-list" role="menu">
@@ -128,11 +128,11 @@
                               <li role="presentation"><a href="inbox.html"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right">4</span></a></li>
                               <li role="presentation" class="divider"></li>
                               <li role="presentation"><a href="lock-screen.html"><i class="fa fa-lock"></i>Lock screen</a></li>
-                              <li role="presentation"><a href="login.html"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
+                              <li role="presentation"><a href="{{route('logout')}}"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
                            </ul>
                         </li>
                         <li>
-                           <a href="#" class="log_out waves-effect waves-button waves-classic">
+                           <a href="{{route('logout')}}" class="log_out waves-effect waves-button waves-classic">
                               <span><i class="fa fa-sign-out m-r-xs"></i>Cerrar Sesión</span>
                            </a>
                         </li>
@@ -153,7 +153,15 @@
                            <img src="{{ asset('admin/images/profile-menu-image.png') }}" class="img-circle img-responsive" alt="">
                         </div>
                         <div class="sidebar-profile-details">
-                           <span>Pedro Pérez<br><small>Art Director</small></span>
+                           <span>{{auth()->user()->username}}<br><small>
+                              @if (auth()->user()->role_id == 1)
+                                 Administrador
+                              @elseif (auth()->user()->role_id == 2)
+                                 Escuela
+                              @else
+                                 Instituto
+                              @endif
+                           </small></span>
                         </div>
                      </a>
                   </div>
