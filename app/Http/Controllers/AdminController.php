@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\User;
 use Auth;
 
 use Illuminate\Http\Request;
@@ -17,11 +18,11 @@ class AdminController extends Controller
    */
    public function index()
    {
-      return view('admin.dashboard');
-   }
-
-   public function dashboard(){
-      return view('admin.dashboard');
+      $user_id = auth()->user()->id;
+      $user = User::find($user_id);
+      $inst = $user->institute;
+      return view('admin.bienvenido')
+        ->with('inst', $inst);
    }
 
    /**

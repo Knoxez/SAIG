@@ -32,8 +32,8 @@
       <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet" type="text/css"/>
 
       <script src="{{ asset('admin/plugins/3d-bold-navigation/js/modernizr.js') }}"></script>
-      <script src="{{ asset('admin/plugins/offcanvasmenueffects/js/snap.svg-min.js') }}"></script>
-      <link rel="shortcut icon" href="{{ 'home/img/favicon.png' }}">
+      {{-- <script src="{{ asset('admin/plugins/offcanvasmenueffects/js/snap.svg-min.js') }}"></script> --}}
+      <link rel="shortcut icon" href="{{ asset('home/img/favicon.png') }}">
 
    </head>
    <body class="page-header-fixed page-sidebar-fixed">
@@ -59,7 +59,7 @@
                   </a>
                </div>
                <div class="logo-box">
-                  <a href="{{ route('dashboard') }}" class="logo-text">
+                  <a href="{{ route('bienvenido') }}" class="logo-text">
                      <span>SAIG</span>
                   </a>
                </div>
@@ -80,61 +80,19 @@
                         </li>
                      </ul>
                      <ul class="nav navbar-nav navbar-right">
-                        <li>
-                           <a href="javascript:void(0)" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
-                        </li>
-                        <li class="dropdown">
-                           <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-bell"></i><span class="badge badge-success pull-right"></span></a>
-                           <ul class="dropdown-menu title-caret dropdown-lg" role="menu">
-                              <li>
-                                 <p class="drop-title">Tienes 3 tareas pendientes !</p>
-                              </li>
-                              <li class="dropdown-menu-list slimscroll task">
-                                 <ul class="list-unstyled">
-                                    <li>
-                                       <a href="#">
-                                          <div class="task-icon badge badge-success"><i class="icon-user"></i></div>
-                                          <span class="badge badge-roundless badge-default pull-right">hace 1min</span>
-                                          <p class="task-details">Nuevo usuario registrado.</p>
-                                       </a>
-                                    </li>
-                                    <li>
-                                       <a href="#">
-                                          <div class="task-icon badge badge-danger"><i class="icon-energy"></i></div>
-                                          <span class="badge badge-roundless badge-default pull-right">hace 24min</span>
-                                          <p class="task-details">Error de Servidor.</p>
-                                       </a>
-                                    </li>
-                                    <li>
-                                       <a href="#">
-                                          <div class="task-icon badge badge-info"><i class="icon-heart"></i></div>
-                                          <span class="badge badge-roundless badge-default pull-right">hace 1h</span>
-                                          <p class="task-details">Alcanzaste los 24 mil me gusta.</p>
-                                       </a>
-                                    </li>
-                                 </ul>
-                              </li>
-                              <li class="drop-all"><a href="#" class="text-center">Todas las tareas</a></li>
-                           </ul>
-                        </li>
                         <li class="dropdown">
                            <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
                               <span class="user-name">{{auth()->user()->email}}<i class="fa fa-angle-down"></i></span>
-                              <img src="{{ asset('admin/images/avatar1.png') }}" class="img-circle avatar" width="40" height="40" alt="">
+                              <img src="{{ asset('images/'.auth()->user()->username.'/'.$inst->image) }}" id="user_avatar" class="avatar" width="40" height="40" alt="">
                            </a>
                            <ul class="dropdown-menu dropdown-list" role="menu">
-                              <li role="presentation"><a href="profile.html"><i class="fa fa-user"></i>Perfil</a></li>
+                              <li role="presentation"><a href="{{route('perfil.index')}}"><i class="fa fa-user"></i>Perfil</a></li>
                               <li role="presentation"><a href="calendar.html"><i class="fa fa-calendar"></i>Calendar</a></li>
                               <li role="presentation"><a href="inbox.html"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right">4</span></a></li>
                               <li role="presentation" class="divider"></li>
                               <li role="presentation"><a href="lock-screen.html"><i class="fa fa-lock"></i>Lock screen</a></li>
                               <li role="presentation"><a href="{{route('logout')}}"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
                            </ul>
-                        </li>
-                        <li>
-                           <a href="{{route('logout')}}" class="log_out waves-effect waves-button waves-classic">
-                              <span><i class="fa fa-sign-out m-r-xs"></i>Cerrar Sesión</span>
-                           </a>
                         </li>
                      </ul>
                      <!-- Nav -->
@@ -148,9 +106,9 @@
             <div class="page-sidebar-inner slimscroll">
                <div class="sidebar-header">
                   <div class="sidebar-profile">
-                     <a href="">
-                        <div class="sidebar-profile-image">
-                           <img src="{{ asset('admin/images/profile-menu-image.png') }}" class="img-circle img-responsive" alt="">
+                     <a>
+                        <div class="sidebar-profile-image avatar-content">
+                           <img src="{{asset('images/'.auth()->user()->username.'/'.$inst->image)}}" id="user_logo" alt="">
                         </div>
                         <div class="sidebar-profile-details">
                            <span>{{auth()->user()->username}}<br><small>
@@ -167,17 +125,35 @@
                   </div>
                </div>
                <ul class="menu accordion-menu">
-                  <li class="active" id="dashboard"><a href="{{ URL('admin/inicio') }}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Inicio</p></a></li>
-                  <li class="" id="editor"><a href="{{ URL('admin/editor') }}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-envelope"></span><p>Editor del Sitio</p></a></li>
-                  <li class="" id=""><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-briefcase"></span><p>UI Kits</p></a></li>
-                  <li class="" id=""><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-th"></span><p>Layouts</p></a></li>
-                  <li class="" id="course"><a href="{{ URL('admin/cursos') }}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-list"></span><p>Cursos</p></a></li>
-                  <li class=""><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-edit"></span><p>Forms</p></a></li>
-                  <li class=""><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-stats"></span><p>Charts</p></a></li>
-                  <li class=""><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-log-in"></span><p>Login</p></a></li>
-                  <li class=""><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-map-marker"></span><p>Maps</p></a></li>
-                  <li class=""><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-gift"></span><p>Extra</p></a></li>
-                  <li class=""><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-flash"></span><p>Levels</p></a></li>
+                  <li class="" id="inicio"><a href="{{ URL('admin/bienvenido') }}" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Inicio</p></a></li>
+                  <li class="droplink">
+                      <a href="#" class="waves-effect waves-button">
+                          <span class="menu-icon fa fa-graduation-cap"></span>
+                          @if (auth()->user()->role_id == 1)
+                              <p>Administrador</p>
+                              <span class="arrow"></span>
+                          @elseif (auth()->user()->role_id == 2)
+                              <p>Escuela</p>
+                              <span class="arrow"></span>
+                          @else
+                              <p>Instituto</p>
+                              <span class="arrow"></span>
+                          @endif
+                      </a>
+                      <ul class="sub-menu">
+                          <li class="" id="perfil"><a href="{{route('perfil.index')}}">Perfil</a></li>
+                          <li class="" id="cursos"><a href="{{route('curso.index')}}">Cursos</a></li>
+                          <li class="" id="horarios"><a href="{{route('horarios.index')}}">Horarios</a></li>
+                          <li class="" id="metodos"><a href="{{route('method.index')}}">Métodos</a></li>
+                          <li class="" id="comida"><a href="{{route('comida.index')}}">Menú de Comida</a></li>
+                          <li class="" id="sponsor"><a href="{{route('sponsor.index')}}">Patrocinadores</a></li>
+                      </ul>
+                  </li>
+                  <li class="" id="site"><a href="#" class="waves-effect waves-button"><span class="menu-icon icon-screen-desktop"></span><p>Sitio</p></a></li>
+                  <li class="" id="publicaciones"><a href="{{route('publications.index')}}" class="waves-effect waves-button"><span class="menu-icon icon-globe"></span><p>Publicaciones</p></a></li>
+                  <li class="" id="gallery"><a href="#" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-picture"></span><p>Galeria</p></a></li>
+                  <li class="" id="students"><a href="#" class="waves-effect waves-button"><span class="menu-icon fa fa-graduation-cap"></span><p>Alumnos</p></a></li>
+                  <li class="" id="diverso"><a href="{{ URL('admin/miscellaneous')}}" class="waves-effect waves-button"><span class="menu-icon icon-settings"></span><p>Configuración</p></a></li>
                </ul>
             </div>
             <!-- Page Sidebar Inner -->
@@ -185,8 +161,9 @@
          <!-- Page Sidebar -->
          <div class="page-inner">
 
-            @yield('main')
-
+             <div class="reload">
+                 @yield('main')
+             </div>
 
             <div class="page-footer">
                <p class="no-s">2018 &copy; Modern by Steelcoders.</p>
@@ -208,7 +185,6 @@
       <script src="{{ asset('admin/plugins/switchery/switchery.min.js') }}"></script>
       <script src="{{ asset('admin/plugins/uniform/jquery.uniform.min.js') }}"></script>
       <script src="{{ asset('admin/plugins/offcanvasmenueffects/js/classie.js') }}"></script>
-      <script src="{{ asset('admin/plugins/offcanvasmenueffects/js/main.js') }}"></script>
       <script src="{{ asset('admin/plugins/waves/waves.min.js') }}"></script>
       <script src="{{ asset('admin/plugins/3d-bold-navigation/js/main.js') }}"></script>
       <script src="{{ asset('admin/plugins/toastr/toastr.min.js') }}"></script>

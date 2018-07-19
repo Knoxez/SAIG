@@ -1,0 +1,48 @@
+.is-invalid {
+   border-color:#dc3545
+   }
+
+.is-invalid:focus {
+   border-color:#dc3545
+}
+
+.is-valid{
+   border-color: #28a745;
+}
+
+.is-valid:focus{
+   border-color: #28a745;
+}
+
+.responsive-img {
+   width: 100%;
+   height: auto;
+}
+
+div.container-img:hover{
+   cursor: pointer;
+   background-color: #fbfbfb;
+   opacity: .8;
+   transition-timing-function: ease;
+   transition: .5s;
+}
+
+div.container-img {
+   margin: auto;
+   display: block;
+   height:340px;
+   width:520px;;
+   max-width: none !important;
+}
+
+div.container-img {
+   overflow: hidden;
+   margin: 1em;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   border-style: dashed;
+   border-radius: 25px;
+   border-color: rgba(234,112,102,.3);
+}

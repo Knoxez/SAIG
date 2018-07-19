@@ -1,0 +1,139 @@
+/* Write your custom CSS here */
+.vl {
+   border-left: 1px solid #eee;
+   height: auto;
+}
+
+.vl-r {
+   border-right: 3px solid gray;
+   height: auto;
+}
+
+.hl {
+    margin: 1em;
+    border: 1px solid #eee;
+    width: auto;
+}
+
+.img-container {
+   background-color: #f1f4f9;
+   padding: 0;
+   margin: 0 0 1em 0;
+   height: 152px;
+   width: 382px;
+   border-style: dashed;
+   border-width: 2px;
+   border-radius: 4px;
+   border-color: #6a5fac;
+
+   cursor: pointer;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btn-right {
+    margin: 0 5px;
+   float: right;
+}
+
+div.img-content{
+    margin: auto;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10%;
+}
+
+.img-content  img {
+    width: auto;
+    height: 100%;
+    margin-left: -72.5px;
+}
+
+.avatar-content{
+    margin: auto;
+    display: inline-block;
+    position: relative;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 10%;
+}
+
+.avatar-content img{
+    width: auto;
+    height: 100%;
+    margin-left: -30px;
+}
+
+.user_avatar{
+    margin: auto;
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 10%;
+}
+
+.user-avatar img{
+    width: auto;
+    height: 100%;
+    margin-left: -10px;
+}
+
+.edit-image{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-content:hover .edit-image{
+    opacity: .8;
+    cursor: pointer;
+}
+
+.img-content:hover .icon-center{
+    opacity: 1;
+}
+
+.icon-center{
+    opacity: 1;
+    font-size: 5em;
+}
+
+.center-text {
+    font-family: arial;
+    font-size: 30px;
+    text-align: center;
+}
+
+textarea{
+    resize: none;
+}
+
+#imageInput{
+    display: none;
+}
+
+#save-changes{
+    display: none;
+}
+
+#grp-edit{
+    display: none;
+}

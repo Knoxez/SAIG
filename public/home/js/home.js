@@ -309,11 +309,9 @@ function getRoles(){
 }
 
 function create_user(){
-
    const roles = $('.btn-radio:checked');
    const radio = roles[0];
    const formData = new FormData($('#form-store')[0]);
-   console.log(formData);
 
    $.ajax({
       type: 'post',
@@ -325,10 +323,14 @@ function create_user(){
       success: function (data) {
          let ok = data[0];
          console.log(ok);
+         let auth = data;
+         let error = data.responseJSON;
+         if (auth) {
+            location.href  =  admin;
+         }
       },
       error: function (res) {
          let error = res.responseJSON;
-         console.log(error);
          if(res.status == 422 ){
             for(let name in error['errors']){
                 let d_error = error['errors'];

@@ -54,7 +54,7 @@
                                        <img src="{{asset('home/img/icons/picture.png')}}" class="responsive-img" id="img" alt="image">
                                     </center>
                                  </div>
-                                 <input type="file" name="image" id="img_inst" accept="image/*" style="display:none" value="">
+                                 <input type="file" name="image" id="img_inst" accept="image/png" style="display:none" value="">
                               </div>
                            </div>
                            <div class="media-body">
@@ -99,7 +99,7 @@
 @endsection
 
 @section('scripts')
-<script src="https://unpkg.com/imask"></script>
+<script src="{{asset('home/plugins/imask/imask.js')}}"></script>
 <script src="{{ asset('home/js/home.js') }}"></script>
 <script type="text/javascript">
    const store = "{{ action('HomeController@store') }}";
