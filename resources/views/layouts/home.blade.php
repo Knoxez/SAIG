@@ -380,8 +380,10 @@
                <div class="panel-body not-rounded">
                   <form role="form" id="form-login">
                      @csrf
-                     <div class="form-group login_false">
-
+                     <div class="form-group session-alert">
+                         @if (session()->has('flash'))
+                             <div class="alert alert-danger"><strong>{{session('flash')}}</strong></div>
+                         @endif
                      </div>
                      <div class="form-group" id="group-email_log">
                         <label for="email" class="control-label">Correo Electrónico</label>
@@ -394,15 +396,9 @@
                         <input type="password" name="password" id="password_log" class="form-control" placeholder="">
                         <span class="text-danger"><strong class="error-password_log"></strong></span>
                      </div>
-                     <br>
                      <span class="invalid-feedback text-danger"><strong class="error-text"></strong></span>
-                     <div class="form-group formField">
-                        <input type="submit" class="btn btn-primary btn-block bg-color-3 border-color-3 not-rounded" id="login" value="Iniciar Sesión">
-                     </div>
-                     <div class="form-group formField">
-                        <p class="help-block">
-                           <a href="#">Forgot password?</a>
-                        </p>
+                     <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-block bg-color-3 border-color-3 not-rounded" id="login" value="Iniciar Sesión"  style="margin-top: 1em;">
                      </div>
                   </form>
                </div>
@@ -431,7 +427,7 @@
    <script type="text/javascript">
       let token = "{{ Session::token() }}";
       let sesion = "{{action('Auth\LoginController@login')}}";
-      let admin = "{{route('dashboard')}}";
+      let admin = "{{route('bienvenido')}}";
    </script>
 </body>
 

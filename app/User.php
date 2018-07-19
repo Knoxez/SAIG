@@ -28,6 +28,6 @@ class User extends Authenticatable
     ];
 
     public function institute(){
-      return $this->belongTo('App\Institute');
+      return $this->belongsTo('App\Institute');
    }
 }

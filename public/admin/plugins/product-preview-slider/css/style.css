@@ -1,6 +1,6 @@
-/* -------------------------------- 
+/* --------------------------------
 
-Main Components 
+Main Components
 
 -------------------------------- */
 .cd-gallery {
@@ -254,7 +254,7 @@ Main Components
 .cd-item-info b {
     margin-bottom: 5px;
     display: block;
-    
+
 }
 .cd-item-info b a {
   color: #2f2933;
@@ -325,9 +325,9 @@ Main Components
   display: none;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
-xcredits 
+xcredits
 
 -------------------------------- */
 .credits {
@@ -349,8 +349,16 @@ xcredits
     text-decoration: none;
 }
 
-.cd-item-details a:hover {
+.cd-item-details a.on:hover {
     color: #22BAA0;
+}
+
+.cd-item-details a.off:hover {
+    color: #f25656;
+}
+
+.cd-item-details a.edit:hover {
+    color: #08A7C3;
 }
 
 .cd-item-details a i {

@@ -16,34 +16,38 @@ class HomeController extends Controller
       $this->middleware('guest');
    }
 
-   public function index(){
+   public function index()
+   {
       return view('home.index');
    }
 
-   public function getRoles(){
+   public function getRoles()
+   {
       $roles = Role::All()->except(1);
       return response()->json($roles);
    }
 
-   public function create(){
+   public function create()
+   {
       return view('home.registro');
    }
 
-   public function store(Request $request){
+   public function store(Request $request)
+   {
+      $create = true;
       $rules = [
          'username'  =>    'required|string|max:255',
          'email'     =>    'required',
          'password'  =>    'required|confirmed|min:8|max:12',
          'schoolkey' =>    'required|unique:institutes',
          'phone'     =>    'required',
-         'image'     =>    'required|image|mimes:jpeg,png,jpg|max:3072'
+         'image'     =>    'required|image|max:3072'
       ];
 
       $this->validate($request, $rules);
 
       if ($request->hasFile('image')) {
          // Imagen
-         $user = Auth::user();
          $file = $request->file('image');
          $extension = $request->file('image')->getClientOriginalExtension();
          $file_name = $request->schoolkey.'_'.time().'.'.$extension;
@@ -71,8 +75,13 @@ class HomeController extends Controller
       if ($request->ajax()) {
          $institute->save();
          $institute->users()->save($user);
-         return view ('admin.bienvenido');
+         $credentials = array('email' => $request['email'], 'password' => $request['password'] );
+         if (Auth::attempt($credentials)) {
+             $create = true;
+             return response()->json($create);
+         }
       }
+      $create = false;
       return response()->json($institute, $user);
    }
 
